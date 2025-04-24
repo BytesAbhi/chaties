@@ -18,22 +18,25 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class BlockcoordinatorPanelProvider extends PanelProvider
+class GroupPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('blockcoordinator')
-            ->path('blockcoordinator')
+            ->id('group')
+            ->path('group')
+            ->login()
+            ->authGuard('groupregistrations')
+            ->brandName('Group Registration')
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Blockcoordinator/Resources'), for: 'App\\Filament\\Blockcoordinator\\Resources')
-            ->discoverPages(in: app_path('Filament/Blockcoordinator/Pages'), for: 'App\\Filament\\Blockcoordinator\\Pages')
+            ->discoverResources(in: app_path('Filament/Group/Resources'), for: 'App\\Filament\\Group\\Resources')
+            ->discoverPages(in: app_path('Filament/Group/Pages'), for: 'App\\Filament\\Group\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Blockcoordinator/Widgets'), for: 'App\\Filament\\Blockcoordinator\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Group/Widgets'), for: 'App\\Filament\\Group\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

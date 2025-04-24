@@ -44,9 +44,21 @@ return [
             'driver' => 'session',
             'provider' => 'vendors',
         ],
-        'distcoordinator' => [
+        'distt' => [
             'driver' => 'session',
             'provider' => 'district_coordinators',
+        ],
+        'block' => [
+            'driver' => 'session',
+            'provider' => 'block_coordinators',
+        ],
+        'userregistrations' => [
+            'driver' => 'session',
+            'provider' => 'userregistrations',
+        ],
+        'groupregistrations' => [
+            'driver' => 'session',
+            'provider' => 'groupregistrations',
         ],
 
     ],
@@ -80,6 +92,18 @@ return [
         'district_coordinators' => [
             'driver' => 'eloquent',
             'model' => App\Models\DistrictCoordinator::class,
+        ],
+        'block' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\BlockCoordinator::class,
+        ],
+        'userregistrations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\UserRegistration::class,
+        ],
+        'groupregistrations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GroupRegistration::class,
         ],
 
         // 'users' => [

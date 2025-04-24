@@ -3,7 +3,10 @@
 return [
     App\Providers\AppServiceProvider::class,
     App\Providers\Filament\AdminPanelProvider::class,
-    App\Providers\Filament\BlockcoordinatorPanelProvider::class,
-    App\Providers\Filament\DistCoordinatorPanelProvider::class,
+    App\Providers\Filament\BlockPanelProvider::class,
+    App\Providers\Filament\DisttPanelProvider::class,
+    App\Providers\Filament\GroupPanelProvider::class,
+    App\Providers\Filament\GroupregistrationPanelProvider::class,
+    App\Providers\Filament\UsersPanelProvider::class,
     App\Providers\Filament\VendorPanelProvider::class,
 ];

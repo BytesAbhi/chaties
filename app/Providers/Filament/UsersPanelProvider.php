@@ -18,25 +18,25 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class DistCoordinatorPanelProvider extends PanelProvider
+class UsersPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('distCoordinator')
-            ->path('distCoordinator')
-            ->authGuard('distcoordinator') // use the new guard
-            ->brandName('Distt Coordinator Panel')
-            // ->middleware(['web'])
+            ->id('users')
+            ->path('user')
+            ->login()
+            ->authGuard('userregistrations')
+            ->brandName('User Registration')
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/DistCoordinator/Resources'), for: 'App\\Filament\\DistCoordinator\\Resources')
-            ->discoverPages(in: app_path('Filament/DistCoordinator/Pages'), for: 'App\\Filament\\DistCoordinator\\Pages')
+            ->discoverResources(in: app_path('Filament/Users/Resources'), for: 'App\\Filament\\Users\\Resources')
+            ->discoverPages(in: app_path('Filament/Users/Pages'), for: 'App\\Filament\\Users\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/DistCoordinator/Widgets'), for: 'App\\Filament\\DistCoordinator\\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Users/Widgets'), for: 'App\\Filament\\Users\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

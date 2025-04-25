@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('contact');
             $table->text('address')->nullable();
             $table->string('block');
-            $table->unsignedBigInteger('vendor_id');
+            $table->unsignedBigInteger('distt_coord');
             $table->rememberToken();
             $table->timestamps();
 
             // Foreign key constraint
-            $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('cascade');
+            $table->foreign('distt_coord')->references('id')->on('vendors')->onDelete('cascade');
         });
     }
 

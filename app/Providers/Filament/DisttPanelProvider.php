@@ -26,7 +26,7 @@ class DisttPanelProvider extends PanelProvider
             ->id('distt')
             ->path('distt')
             ->login()
-            ->authGuard('distt')
+            ->authGuard('district')
             ->brandName('Distt Coordinator Panel')
             ->colors([
                 'primary' => Color::Amber,

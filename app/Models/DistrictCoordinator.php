@@ -23,19 +23,19 @@ class DistrictCoordinator extends Model
         'vendor_id',
     ];
 
-    // If you want to hash the password when setting it
-    protected static function booted()
-    {
-        static::creating(function ($coordinator) {
-            $coordinator->password = bcrypt($coordinator->password);
-        });
-    }
-
     protected $hidden = ['password', 'remember_token'];
     
     // Relationship to the Vendor model
     public function vendor()
     {
         return $this->belongsTo(Vendor::class); // Each coordinator belongs to one vendor
+    }
+
+    // Automatically hash password when setting
+    protected static function booted()
+    {
+        static::creating(function ($coordinator) {
+            $coordinator->password = bcrypt($coordinator->password);
+        });
     }
 }

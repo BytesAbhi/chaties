@@ -44,22 +44,15 @@ return [
             'driver' => 'session',
             'provider' => 'vendors',
         ],
-        'distt' => [
+        'district' => [
             'driver' => 'session',
-            'provider' => 'district_coordinators',
+            'provider' => 'district',
         ],
         'block' => [
             'driver' => 'session',
             'provider' => 'block_coordinators',
         ],
-        'userregistrations' => [
-            'driver' => 'session',
-            'provider' => 'userregistrations',
-        ],
-        'groupregistrations' => [
-            'driver' => 'session',
-            'provider' => 'groupregistrations',
-        ],
+        
 
     ],
 
@@ -89,7 +82,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Vendor::class,
         ],
-        'district_coordinators' => [
+        'district' => [
             'driver' => 'eloquent',
             'model' => App\Models\DistrictCoordinator::class,
         ],
@@ -97,14 +90,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\BlockCoordinator::class,
         ],
-        'userregistrations' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\UserRegistration::class,
-        ],
-        'groupregistrations' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\GroupRegistration::class,
-        ],
+
 
         // 'users' => [
         //     'driver' => 'database',

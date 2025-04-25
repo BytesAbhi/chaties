@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Vendor\Resources;
+namespace App\Filament\Resources;
 
-use App\Filament\Vendor\Resources\DistrictCoordinatorResource\Pages;
-use App\Filament\Vendor\Resources\DistrictCoordinatorResource\RelationManagers;
+use App\Filament\Resources\DistrictCoordinatorResource\Pages;
+use App\Filament\Resources\DistrictCoordinatorResource\RelationManagers;
 use App\Models\DistrictCoordinator;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -19,39 +19,11 @@ class DistrictCoordinatorResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Forms\Form $form): Forms\Form
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->label('Distt Coordinator Name'),
-
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->unique(ignorable: fn($record) => $record)
-                    ->required()
-                    ->label('Vendor Email'),
-
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->label('Password')
-                    ->dehydrateStateUsing(fn($state) => bcrypt($state)),
-
-                Forms\Components\TextInput::make('contact')
-                    ->required()
-                    ->label('Contact'),
-
-                Forms\Components\TextArea::make('district')
-                    ->nullable()
-                    ->label('District (State Name)'),
-
-                Forms\Components\TextArea::make('address')
-                    ->nullable()
-                    ->label('Address'),
-
-
+                //
             ]);
     }
 
@@ -59,12 +31,14 @@ class DistrictCoordinatorResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('contact'),
+                Tables\Columns\TextColumn::make('address'),
                 Tables\Columns\TextColumn::make('district'),
-                Tables\Columns\TextColumn::make('phone'),
+                Tables\Columns\TextColumn::make('vendor_id'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
-
             ])
             ->filters([
                 //

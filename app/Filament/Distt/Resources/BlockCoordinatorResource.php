@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Vendor\Resources;
+namespace App\Filament\Distt\Resources;
 
-use App\Filament\Vendor\Resources\DistrictCoordinatorResource\Pages;
-use App\Filament\Vendor\Resources\DistrictCoordinatorResource\RelationManagers;
-use App\Models\DistrictCoordinator;
+use App\Filament\Distt\Resources\BlockCoordinatorResource\Pages;
+use App\Filament\Distt\Resources\BlockCoordinatorResource\RelationManagers;
+use App\Models\BlockCoordinator;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,19 +13,19 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DistrictCoordinatorResource extends Resource
+class BlockCoordinatorResource extends Resource
 {
-    protected static ?string $model = DistrictCoordinator::class;
+    protected static ?string $model = BlockCoordinator::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Forms\Form $form): Forms\Form
+    public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->label('Distt Coordinator Name'),
+                    ->label('Block Coordinator Name'),
 
                 Forms\Components\TextInput::make('email')
                     ->email()
@@ -50,8 +50,6 @@ class DistrictCoordinatorResource extends Resource
                 Forms\Components\TextArea::make('address')
                     ->nullable()
                     ->label('Address'),
-
-
             ]);
     }
 
@@ -64,7 +62,6 @@ class DistrictCoordinatorResource extends Resource
                 Tables\Columns\TextColumn::make('district'),
                 Tables\Columns\TextColumn::make('phone'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
-
             ])
             ->filters([
                 //
@@ -89,9 +86,9 @@ class DistrictCoordinatorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDistrictCoordinators::route('/'),
-            'create' => Pages\CreateDistrictCoordinator::route('/create'),
-            'edit' => Pages\EditDistrictCoordinator::route('/{record}/edit'),
+            'index' => Pages\ListBlockCoordinators::route('/'),
+            'create' => Pages\CreateBlockCoordinator::route('/create'),
+            'edit' => Pages\EditBlockCoordinator::route('/{record}/edit'),
         ];
     }
 }

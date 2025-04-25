@@ -17,7 +17,11 @@ class BankdetailsResource extends Resource
 {
     protected static ?string $model = Bankdetails::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
+    protected static ?string $navigationLabel = 'Bank Details';
+    protected static ?string $pluralLabel = 'Bank Details';
+    protected static ?string $label = 'Bank Detail';
+
 
     public static function form(Form $form): Form
     {

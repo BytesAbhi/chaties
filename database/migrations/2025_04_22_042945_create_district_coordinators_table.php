@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('district_coordinators', function (Blueprint $table) {
+        Schema::create('district', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('contact');
             $table->text('address')->nullable();
             $table->string('district');
+            $table->string('role')->default('District Coordinator');
             $table->unsignedBigInteger('vendor_id');
             $table->rememberToken();
             $table->timestamps();
@@ -27,6 +28,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('district_coordinators');
+        Schema::dropIfExists('district');
     }
 };

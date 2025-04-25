@@ -43,9 +43,9 @@ class BlockCoordinatorResource extends Resource
                     ->required()
                     ->label('Contact'),
 
-                Forms\Components\TextArea::make('district')
+                Forms\Components\TextArea::make('block')
                     ->nullable()
-                    ->label('District (State Name)'),
+                    ->label('Block (District)'),
 
                 Forms\Components\TextArea::make('address')
                     ->nullable()
@@ -59,8 +59,8 @@ class BlockCoordinatorResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('district'),
-                Tables\Columns\TextColumn::make('phone'),
+                Tables\Columns\TextColumn::make('block'),
+                Tables\Columns\TextColumn::make('contact'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([

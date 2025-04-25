@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BlockCoordinatorResource\Pages;
-use App\Filament\Resources\BlockCoordinatorResource\RelationManagers;
-use App\Models\BlockCoordinator;
+use App\Filament\Resources\BankdetailsResource\Pages;
+use App\Filament\Resources\BankdetailsResource\RelationManagers;
+use App\Models\Bankdetails;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BlockCoordinatorResource extends Resource
+class BankdetailsResource extends Resource
 {
-    protected static ?string $model = BlockCoordinator::class;
+    protected static ?string $model = Bankdetails::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -31,11 +31,16 @@ class BlockCoordinatorResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('block'),
-                Tables\Columns\TextColumn::make('contact'),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Coordinator Name')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('role')->searchable(),
+                Tables\Columns\TextColumn::make('bank_name')->searchable(),
+                Tables\Columns\TextColumn::make('account_number')->searchable(),
+                Tables\Columns\TextColumn::make('account_holder_name'),
+                Tables\Columns\TextColumn::make('ifsc_code'),
+                Tables\Columns\TextColumn::make('branch_name'),
             ])
             ->filters([
                 //
@@ -60,9 +65,9 @@ class BlockCoordinatorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBlockCoordinators::route('/'),
-            'create' => Pages\CreateBlockCoordinator::route('/create'),
-            'edit' => Pages\EditBlockCoordinator::route('/{record}/edit'),
+            'index' => Pages\ListBankdetails::route('/'),
+            // 'create' => Pages\CreateBankdetails::route('/create'),
+            'edit' => Pages\EditBankdetails::route('/{record}/edit'),
         ];
     }
 }

@@ -2,40 +2,40 @@
 
 namespace App\Models;
 
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class BlockCoordinator extends Model
+class BlockCoordinator extends Authenticatable  
 {
+    use HasFactory, Notifiable;
 
-    use HasFactory;
+    protected $table = 'block'; 
 
-    // Table name (optional, Laravel automatically uses plural of the model name)
-    protected $table = 'block_coordinators';
     protected $fillable = [
         'name',
         'email',
         'password',
         'contact',
         'address',
-        'district',
-        'vendor_id',
+        'block',
+        'role',
+        'distt_coord',
     ];
 
-    // If you want to hash the password when setting it
-    protected static function booted()
-    {
-        static::creating(function ($coordinator) {
-            $coordinator->password = bcrypt($coordinator->password);
-        });
-    }
+    // Encrypt the password when creating a new record
+    // protected static function booted()
+    // {
+    //     static::creating(function ($coordinator) {
+    //         $coordinator->password = bcrypt($coordinator->password);
+    //     });
+    // }
 
     protected $hidden = ['password', 'remember_token'];
-    
-    // Relationship to the Vendor model
-    public function vendor()
-    {
-        return $this->belongsTo(Vendor::class); // Each coordinator belongs to one vendor
-    }
+
+
+    // public function vendor()
+    // {
+    //     return $this->belongsTo(DistrictCoordinator::class); 
+    // }
 }

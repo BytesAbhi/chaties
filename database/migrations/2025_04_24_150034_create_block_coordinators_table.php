@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('block_coordinators', function (Blueprint $table) {
+        Schema::create('block', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('contact');
             $table->text('address')->nullable();
             $table->string('block');
+            $table->string('role')->default('Block Coordinator');
             $table->unsignedBigInteger('distt_coord');
             $table->rememberToken();
             $table->timestamps();
@@ -34,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('block_coordinators');
+        Schema::dropIfExists('block');
     }
 };

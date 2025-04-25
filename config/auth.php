@@ -50,10 +50,8 @@ return [
         ],
         'block' => [
             'driver' => 'session',
-            'provider' => 'block_coordinators',
+            'provider' => 'block',
         ],
-        
-
     ],
 
     /*
@@ -90,12 +88,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\BlockCoordinator::class,
         ],
-
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

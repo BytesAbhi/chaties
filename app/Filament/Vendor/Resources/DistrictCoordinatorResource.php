@@ -31,7 +31,7 @@ class DistrictCoordinatorResource extends Resource
                     ->email()
                     ->unique(ignorable: fn($record) => $record)
                     ->required()
-                    ->label('Vendor Email'),
+                    ->label('Coordinator Email'),
 
                 Forms\Components\TextInput::make('password')
                     ->password()
@@ -45,7 +45,7 @@ class DistrictCoordinatorResource extends Resource
 
                 Forms\Components\TextArea::make('district')
                     ->nullable()
-                    ->label('District (State Name)'),
+                    ->label('Operating District'),
 
                 Forms\Components\TextArea::make('address')
                     ->nullable()

@@ -11,26 +11,25 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vendors', function (Blueprint $table) {
+        Schema::create('bankdetails', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('holder_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone')->nullable();
-            $table->text('state')->nullable();
-            $table->string('role')->default('State Coordinator');
-            $table->text('address')->nullable();
-            $table->rememberToken();
+            $table->string('role');
+            $table->string('bank_name');
+            $table->string('account_number');
+            $table->string('account_holder_name');
+            $table->string('ifsc_code');
+            $table->string('branch_name');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendors');
+        Schema::dropIfExists('bankdetails');
     }
 };

@@ -17,6 +17,7 @@ class Vendor extends Authenticatable
         'password',
         'phone',
         'state',
+        'role',
         'address'
     ];
 

@@ -27,7 +27,7 @@ class BlockPanelProvider extends PanelProvider
             ->path('block')
             ->login()
             ->authGuard('block')
-            ->brandName('Distt Coordinator Panel')
+            ->brandName('Block Coordinator Panel')
             ->colors([
                 'primary' => Color::Amber,
             ])

@@ -1,21 +1,24 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Participant extends Model
+class Participant extends Authenticatable
 {
     use HasFactory;
 
+    protected $table = 'participants';
+
     protected $fillable = [
-        'userregistration_id',
+        'email',
+        'mobile',
+        'password',
         'profile_picture',
         'participant_name',
         'parent_name',
-        'email',
-        'mobile',
+        'name',
+        'phone',
         'certificate_option',
         'delivery_address',
         'delivery_status',
@@ -24,15 +27,11 @@ class Participant extends Model
         'face_verified',
         'face_status',
         'can_download_certificate',
+        'google_id',
     ];
 
     protected $casts = [
         'face_verified' => 'boolean',
         'can_download_certificate' => 'boolean',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(UserRegistration::class, 'userregistration_id');
-    }
 }

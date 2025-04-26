@@ -17,6 +17,9 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 
 Route::post('/register', [RegisterController::class, 'register']);
 
+Route::get('auth/google', [App\Http\Controllers\Auth\RegisterController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [App\Http\Controllers\Auth\RegisterController::class, 'handleGoogleCallback']);
+
 Route::get('/dashboard', [ParticipantController::class, 'index'])->middleware('auth')->name('dashboard');
 
 Route::get('/usersall', [ParticipantController::class, 'create']);
@@ -27,8 +30,6 @@ Route::post('/photos/upload', [PhotoController::class, 'upload'])->middleware('a
 
 Route::get('/certificates/download/{participant}', [CertificateController::class, 'download'])->middleware('auth')->name('certificates.download');
 
-Route::get('/certificates/order/{participant}', 
-
-[CertificateController::class, 'order'])->middleware('auth')->name('certificates.order');
+Route::get('/certificates/order/{participant}', [CertificateController::class, 'order'])->middleware('auth')->name('certificates.order');
 
 Route::post('/certificates/order', [CertificateController::class, 'storeOrder'])->middleware('auth')->name('certificates.order.store');

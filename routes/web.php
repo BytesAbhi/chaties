@@ -12,7 +12,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\PhotoController;
 
 
-
+use Illuminate\Support\Facades\Auth;
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 Route::post('/register', [RegisterController::class, 'register']);
@@ -20,7 +20,18 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('auth/google', [App\Http\Controllers\Auth\RegisterController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\Auth\RegisterController::class, 'handleGoogleCallback']);
 
-Route::get('/dashboard', [ParticipantController::class, 'index'])->middleware('auth')->name('dashboard');
+// Add route for editing participant data
+Route::get('/participants/{id}/edit', [ParticipantController::class, 'edit'])->name('participants.edit');
+Route::put('/participants/{id}', [ParticipantController::class, 'update'])->name('participants.update');
+
+Route::get('/certificate/download', [App\Http\Controllers\CertificateController::class, 'download'])->name('certificate.download');
+
+
+Route::get('/userdashboard', [ParticipantController::class, 'index'])->name('userdashboard');
+Route::post('logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
 
 Route::get('/usersall', [ParticipantController::class, 'create']);
 

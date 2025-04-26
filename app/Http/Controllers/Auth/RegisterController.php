@@ -37,7 +37,8 @@ class RegisterController extends Controller
 
             \Log::info('User logged in: ' . Auth::check());
 
-            return redirect()->with('success', 'Registration successful!');
+            return redirect('/userdashboard')->with('success', 'Registration successful!');
+
         } catch (\Illuminate\Validation\ValidationException $e) {
             \Log::warning('Validation failed: ' . json_encode($e->errors()));
             throw $e;
@@ -72,7 +73,8 @@ class RegisterController extends Controller
             }
 
             Auth::login($user);
-            return redirect()->with('success', 'Logged in with Google!');
+            return redirect('/userdashboard')->with('success', 'Registration successful!');
+
         } catch (\Exception $e) {
             \Log::error('Google login error: ' . $e->getMessage());
             return redirect()->route('register')->with('error', $e->getMessage());

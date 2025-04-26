@@ -52,6 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'block',
         ],
+        'web' => [
+        'driver' => 'session',
+        'provider' => 'participants',
+    ]
     ],
 
     /*
@@ -87,6 +91,10 @@ return [
         'block' => [
             'driver' => 'eloquent',
             'model' => App\Models\BlockCoordinator::class,
+        ],
+        'participants' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Participant::class,
         ],
     ],
 

@@ -6,21 +6,17 @@ use App\Models\CertificateOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class CertificateController extends Controller
 {
-    public function download(Participant $participant)
+    public function download()
     {
-        if (!$participant->certificate_unlocked) {
-            return redirect()->route('dashboard')->with('error', 'Certificate not unlocked');
-        }
-
-        // Generate PDF (placeholder)
-        $pdf = 'Certificate for ' . $participant->name; // Implement actual PDF generation
-        return response($pdf)
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'attachment; filename="certificate.pdf"');
+        $user = Auth::user();
+    
+        $pdf = Pdf::loadView('certificate.template', compact('user'));
+        return $pdf->download('certificate_' . $user->name . '.pdf');
     }
-
     public function order(Participant $participant)
     {
         $order = CertificateOrder::where('participant_id', $participant->id)->first();

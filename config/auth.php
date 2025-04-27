@@ -52,10 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'block',
         ],
-        'web' => [
-        'driver' => 'session',
-        'provider' => 'participants',
-    ]
+        'participants' => [
+            'driver' => 'session',
+            'provider' => 'participants',
+        ]
     ],
 
     /*
